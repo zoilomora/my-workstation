@@ -1,5 +1,5 @@
---- .zshrc	2018-10-28 18:11:07.427259945 +0100
-+++ .zshrc-new	2018-10-28 18:11:40.063259945 +0100
+--- .zshrc	2018-10-28 19:17:56.648920273 +0100
++++ .zshrc-new	2018-10-28 19:26:37.212697959 +0100
 @@ -8,7 +8,7 @@
  # load a random theme each time oh-my-zsh is loaded, in which case,
  # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -9,3 +9,15 @@
 
  # Set list of themes to pick from when loading at random
  # Setting this variable when ZSH_THEME=random will cause zsh to load
+@@ -64,6 +64,11 @@
+ # Add wisely, as too many plugins slow down shell startup.
+ plugins=(
+   git
++  composer
++  docker
++  docker-compose
++  symfony
++  zsh-autosuggestions
+ )
+
+ source $ZSH/oh-my-zsh.sh
