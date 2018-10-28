@@ -79,6 +79,7 @@ sudo apt install -y \
     filezilla \
     keepassxc \
     zsh \
+    fonts-powerline \
     git
 
 # Installation - Snap
@@ -109,12 +110,16 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 
 # Settings
 sudo groupadd docker && sudo usermod -aG docker $USER
-chsh -s `which zsh`
 
 # Detect hardware sensors
 (while :; do echo ""; done) | sudo sensors-detect
+
+# Go to the home directory
+cd ~
 
 # Customization
 gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
+
+patch < zshrc.patch
