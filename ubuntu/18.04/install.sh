@@ -21,9 +21,6 @@ sudo apt remove -y \
 	shotwell \
 	gnome-todo
 
-sudo snap remove \
-    remmina
-
 # Required to add repositories
 sudo apt install -y \
     curl \
@@ -53,7 +50,6 @@ echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select tr
 # Installation - apt
 sudo apt install -y \
     ubuntu-restricted-extras \
-    ubuntu-communitheme-session \
     gnome-tweak-tool \
     lm-sensors \
     psensor \
@@ -65,15 +61,6 @@ sudo apt install -y \
     htop \
     sublime-text \
     screenfetch \
-    remmina \
-    libfreerdp-plugins-standard \
-    remmina-plugin-secret \
-    remmina-plugin-vnc \
-    remmina-plugin-exec \
-    remmina-plugin-nx \
-    remmina-plugin-spice \
-    remmina-plugin-telepathy \
-    remmina-plugin-xdmcp \
     docker-ce \
     virtualbox-5.2 \
     filezilla \
