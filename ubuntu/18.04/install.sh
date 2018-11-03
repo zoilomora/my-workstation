@@ -32,6 +32,7 @@ sudo apt install -y \
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
+curl -fsSL https://swupdate.openvpn.net/repos/repo-public.gpg | sudo apt-key add -
 
 # Add repositories
 sudo add-apt-repository -y -n ppa:communitheme/ppa
@@ -40,9 +41,15 @@ sudo add-apt-repository -y -n ppa:phoerious/keepassxc
 sudo add-apt-repository -y -n "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 sudo add-apt-repository -y -n "deb https://download.sublimetext.com/ apt/stable/"
 sudo add-apt-repository -y -n "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+sudo add-apt-repository -y -n "deb http://build.openvpn.net/debian/openvpn/release/2.3 stretch main"
 
 # Update package list
 sudo apt update
+
+# OpenVPN dependencies
+wget http://ftp.us.debian.org/debian/pool/main/o/openssl1.0/libssl1.0.2_1.0.2l-2+deb9u3_amd64.deb
+sudo dpkg -i libssl1.0.2_1.0.2l-2+deb9u3_amd64.deb
+rm libssl1.0.2_1.0.2l-2+deb9u3_amd64.deb
 
 # Accept EULA from ttf-mscorefonts-installer
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
@@ -67,7 +74,14 @@ sudo apt install -y \
     keepassxc \
     zsh \
     fonts-powerline \
-    git
+    git \
+    openvpn=2.3.18-stretch0 \
+    network-manager-openvpn \
+    network-manager-openvpn-gnome
+
+# Block packages
+sudo apt-mark hold \
+    openvpn
 
 # Installation - Snap
 sudo snap install \
