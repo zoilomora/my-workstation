@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Go to temporary folder
-cd /tmp
-
 # Upgrade
 sudo apt update && sudo apt full-upgrade -y
 
@@ -59,6 +56,7 @@ echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select tr
 
 # Installation - apt
 sudo apt install -y \
+    net-tools \
     ubuntu-restricted-extras \
     gnome-tweak-tool \
     lm-sensors \
