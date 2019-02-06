@@ -87,7 +87,8 @@ sudo apt install -y \
     remmina-plugin-nx \
     remmina-plugin-spice \
     remmina-plugin-telepathy \
-    remmina-plugin-xdmcp
+    remmina-plugin-xdmcp \
+    python3-pip
 
 # Block packages
 sudo apt-mark hold \
@@ -95,7 +96,9 @@ sudo apt-mark hold \
 
 # Docker
 sudo systemctl enable docker
-sudo groupadd docker && sudo usermod -aG docker $USER
+sudo groupadd docker
+sudo usermod -aG docker $USER # It does not work well?
+
 sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
@@ -123,9 +126,8 @@ wget https://downloads.mongodb.com/compass/mongodb-compass_1.16.0_amd64.deb
 sudo dpkg -i mongodb-compass_1.16.0_amd64.deb
 rm mongodb-compass_1.16.0_amd64.deb
 
-# Installation - copy
-sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-sudo chmod a+rx /usr/local/bin/youtube-dl
+# Installation youtube-dl
+sudo pip3 install youtube-dl
 
 # Detect hardware sensors
 (while :; do echo ""; done) | sudo sensors-detect
@@ -185,6 +187,7 @@ sudo wget https://download-cf.jetbrains.com/python/pycharm-professional-2018.3.4
 sudo tar -xzvf pycharm-professional-2018.3.4.tar.gz
 sudo rm pycharm-professional-2018.3.4.tar.gz
 sudo mv pycharm-2018.3.4 PyCharm-2018.3.4
+# TODO does not show the launcher
 sudo tee /usr/share/applications/jetbrains-pycharm.desktop << EOF
 cat jetbrains-pycharm.desktop
 [Desktop Entry]
@@ -197,3 +200,7 @@ Commet=
 Categories=Development;
 Terminal=false
 EOF
+
+sudo apt update
+sudo apt --fix-broken install
+sudo apt upgrade
