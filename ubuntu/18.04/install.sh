@@ -152,8 +152,9 @@ cd /opt
 
 sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2018.3.3.tar.gz
 sudo tar -xzvf PhpStorm-2018.3.3.tar.gz
+sudo rm PhpStorm-2018.3.3.tar.gz
 sudo mv PhpStorm-183.5153.36 PhpStorm-2018.3.3
-sudo cat << EOF > /usr/share/applications/jetbrains-phpstorm.desktop
+sudo tee /usr/share/applications/jetbrains-phpstorm.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -167,7 +168,8 @@ EOF
 
 sudo wget https://download-cf.jetbrains.com/datagrip/datagrip-2018.3.1.tar.gz
 sudo tar -xzvf datagrip-2018.3.1.tar.gz
-sudo cat << EOF > /usr/share/applications/jetbrains-datagrip.desktop
+sudo rm datagrip-2018.3.1.tar.gz
+sudo tee /usr/share/applications/jetbrains-datagrip.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
@@ -181,8 +183,9 @@ EOF
 
 sudo wget https://download-cf.jetbrains.com/python/pycharm-professional-2018.3.4.tar.gz
 sudo tar -xzvf pycharm-professional-2018.3.4.tar.gz
+sudo rm pycharm-professional-2018.3.4.tar.gz
 sudo mv pycharm-2018.3.4 PyCharm-2018.3.4
-sudo cat << EOF > /usr/share/applications/jetbrains-pycharm.desktop
+sudo tee /usr/share/applications/jetbrains-pycharm.desktop << EOF
 cat jetbrains-pycharm.desktop
 [Desktop Entry]
 Version=1.0
