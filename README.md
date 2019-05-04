@@ -10,11 +10,10 @@ Installation and customization script for my workstation.
 
 2. Execute the following command in the bash terminal:
         
-        set -e && \
-            wget https://github.com/zoilomora/my-workstation/archive/master.zip && \
-            unzip master.zip && \
-            cd my-workstation-master/ubuntu/18.04/ && \
-            ./install.sh
+        $ wget https://github.com/zoilomora/my-workstation/archive/master.zip
+        $ unzip master.zip
+        $ cd my-workstation-master/ubuntu/18.04/
+        $ ./install.sh
 
 ## License
 Licensed under the [MIT license](http://opensource.org/licenses/MIT)
