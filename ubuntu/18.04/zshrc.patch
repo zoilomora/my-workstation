@@ -1,19 +1,19 @@
---- .zshrc	2019-02-06 06:46:30.448562770 +0100
-+++ .zshrc-new	2019-02-06 06:47:52.740982726 +0100
+--- .zshrc	2019-05-04 15:40:45.363988907 +0200
++++ .zshrc-new	2019-05-04 15:44:22.620562931 +0200
 @@ -2,13 +2,13 @@
  # export PATH=$HOME/bin:/usr/local/bin:$PATH
- 
+
  # Path to your oh-my-zsh installation.
 -  export ZSH="/home/zoilo/.oh-my-zsh"
 +export ZSH="/home/zoilo/.oh-my-zsh"
- 
+
  # Set name of the theme to load --- if set to "random", it will
  # load a random theme each time oh-my-zsh is loaded, in which case,
  # to know which specific one was loaded, run: echo $RANDOM_THEME
  # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 -ZSH_THEME="robbyrussell"
 +ZSH_THEME="agnoster"
- 
+
  # Set list of themes to pick from when loading at random
  # Setting this variable when ZSH_THEME=random will cause zsh to load
 @@ -62,7 +62,14 @@
@@ -29,10 +29,10 @@
 +  symfony
 +  zsh-autosuggestions
 +)
- 
+
  source $ZSH/oh-my-zsh.sh
- 
-@@ -94,3 +101,7 @@
+
+@@ -91,3 +98,7 @@
  # Example aliases
  # alias zshconfig="mate ~/.zshrc"
  # alias ohmyzsh="mate ~/.oh-my-zsh"

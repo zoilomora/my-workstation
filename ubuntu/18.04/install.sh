@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Upgrade
-sudo apt update && sudo apt full-upgrade -y
+sudo apt update
+sudo apt full-upgrade -y
 
 # Remove packages by default
 sudo apt remove -y \
@@ -19,7 +22,8 @@ sudo apt remove -y \
 	gnome-todo
 
 # Remove snap packages
-sudo snap remove -y \
+sudo snap remove \
+    gnome-calculator \
     remmina
 
 # Required to add repositories
@@ -34,6 +38,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo apt-key add -
 curl -fsSL https://swupdate.openvpn.net/repos/repo-public.gpg | sudo apt-key add -
+curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
 # Add repositories
 sudo add-apt-repository -y -n ppa:remmina-ppa-team/remmina-next
@@ -42,43 +47,69 @@ sudo add-apt-repository -y -n "deb [arch=amd64] https://download.docker.com/linu
 sudo add-apt-repository -y -n "deb https://download.sublimetext.com/ apt/stable/"
 sudo add-apt-repository -y -n "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
 sudo add-apt-repository -y -n "deb http://build.openvpn.net/debian/openvpn/release/2.3 stretch main"
+sudo add-apt-repository -y -n "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
 
 # Update package list
 sudo apt update
 
-# OpenVPN dependencies
-wget http://ftp.us.debian.org/debian/pool/main/o/openssl1.0/libssl1.0.2_1.0.2l-2+deb9u3_amd64.deb
-sudo dpkg -i libssl1.0.2_1.0.2l-2+deb9u3_amd64.deb
-rm libssl1.0.2_1.0.2l-2+deb9u3_amd64.deb
+# Installation - OpenVPN
+wget http://ftp.us.debian.org/debian/pool/main/o/openssl1.0/libssl1.0.2_1.0.2r-1~deb9u1_amd64.deb
+sudo dpkg -i libssl1.0.2_1.0.2r-1~deb9u1_amd64.deb
+rm libssl1.0.2_1.0.2r-1~deb9u1_amd64.deb
+sudo apt install -y \
+    openvpn=2.3.18-stretch0 \
+    network-manager-openvpn \
+    network-manager-openvpn-gnome
+sudo apt-mark hold \
+    openvpn
 
-# Accept EULA from ttf-mscorefonts-installer
+# Installation - Ubuntu Restricted Extras
+## Accept EULA from ttf-mscorefonts-installer
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
+sudo apt install -y \
+    ubuntu-restricted-extras
 
-# Installation - apt
+# Installation - System Utilities
+sudo apt install -y \
+    gnome-calculator \
+    gnome-tweak-tool \
+    unrar \
+    htop
+
+# Installation - Network Utilities
 sudo apt install -y \
     net-tools \
-    ubuntu-restricted-extras \
-    gnome-tweak-tool \
-    lm-sensors \
-    psensor \
+    traceroute
+
+# Installation - Disk utilities
+sudo apt install -y \
     exfat-fuse \
     exfat-utils \
     ntfs-3g \
-    unrar \
     gparted \
-    htop \
-    sublime-text \
+    ncdu
+
+# Installation - Sensors
+sudo apt install -y \
+    lm-sensors \
+    psensor
+
+# Installation - Utilities
+sudo apt install -y \
     screenfetch \
-    docker-ce \
-    virtualbox-5.2 \
     filezilla \
     keepassxc \
+    sublime-text \
+    virtualbox-6.0
+
+# Installation - Z Shell
+sudo apt install -y \
     zsh \
     fonts-powerline \
-    git \
-    openvpn=2.3.18-stretch0 \
-    network-manager-openvpn \
-    network-manager-openvpn-gnome \
+    git
+
+# Installation - Remote control
+sudo apt install -y \
     remmina \
     libfreerdp-plugins-standard \
     remmina-plugin-secret \
@@ -87,19 +118,37 @@ sudo apt install -y \
     remmina-plugin-nx \
     remmina-plugin-spice \
     remmina-plugin-telepathy \
-    remmina-plugin-xdmcp \
-    python3-pip
+    remmina-plugin-xdmcp
 
-# Block packages
-sudo apt-mark hold \
-    openvpn
+# Installation - Google Chrome
+sudo apt install -y \
+    google-chrome-stable
 
-# Docker
+# Installation - Disc burner
+sudo apt install -y \
+    xfburn
+
+# Installation - MongoDB Compass
+sudo apt install -y \
+    libgconf-2-4
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.17.0_amd64.deb
+sudo dpkg -i mongodb-compass_1.17.0_amd64.deb
+rm mongodb-compass_1.17.0_amd64.deb
+
+# Installation - youtube-dl
+sudo apt install -y \
+    python \
+    ffmpeg \
+    mediainfo-gui
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
+
+# Installation - Docker
+sudo apt install -y \
+    docker-ce
 sudo systemctl enable docker
-sudo groupadd docker
-sudo usermod -aG docker $USER # It does not work well?
-
-sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo usermod -aG docker $USER
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Installation - Snap
@@ -109,38 +158,30 @@ sudo snap install \
     vlc \
     postman
 
-# Installation - Snap Classic
+# Installation - Slack
 sudo snap install slack --classic
-sudo snap install vscode --classic
 
-# Installation - deb
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-
-wget https://www.syntevo.com/downloads/smartgit/smartgit-18_2_5.deb
-sudo dpkg -i smartgit-18_2_5.deb
-rm smartgit-18_2_5.deb
-
-wget https://downloads.mongodb.com/compass/mongodb-compass_1.16.0_amd64.deb
-sudo dpkg -i mongodb-compass_1.16.0_amd64.deb
-rm mongodb-compass_1.16.0_amd64.deb
-
-# Installation youtube-dl
-sudo pip3 install youtube-dl
+# Installation - SmartGit
+wget https://www.syntevo.com/downloads/smartgit/smartgit-18_2_7.deb
+sudo dpkg -i smartgit-18_2_7.deb
+rm smartgit-18_2_7.deb
 
 # Detect hardware sensors
 (while :; do echo ""; done) | sudo sensors-detect
 
-# Copy patch to the home directory
+# ZSH
+echo
+echo "+------------------------------------------------------------------------------------+"
+echo "| Z shell will be installed, after installation it will appear inside the new shell. |"
+echo "| Type the 'exit' command to exit Z shell and continue the installation              |"
+echo "+------------------------------------------------------------------------------------+"
+echo
+read -p "Press enter to continue"
+
 cp zshrc.patch ~
 
-# Customization
-gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
-gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
-gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
-
 cd ~
+
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 patch < zshrc.patch
 rm zshrc.patch
@@ -152,55 +193,43 @@ cd ~
 # Install IDE
 cd /opt
 
-sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2018.3.3.tar.gz
-sudo tar -xzvf PhpStorm-2018.3.3.tar.gz
-sudo rm PhpStorm-2018.3.3.tar.gz
-sudo mv PhpStorm-183.5153.36 PhpStorm-2018.3.3
+sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2019.1.1.tar.gz
+sudo tar -xzvf PhpStorm-2019.1.1.tar.gz
+sudo rm PhpStorm-2019.1.1.tar.gz
+sudo mv PhpStorm-191.6707.66 PhpStorm-2019.1.1
 sudo tee /usr/share/applications/jetbrains-phpstorm.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=PhpStorm
-Icon=/opt/PhpStorm-2018.3.3/bin/phpstorm.svg
-Exec="/opt/PhpStorm-2018.3.3/bin/phpstorm.sh"
+Icon=/opt/PhpStorm-2019.1.1/bin/phpstorm.svg
+Exec="/opt/PhpStorm-2019.1.1/bin/phpstorm.sh"
 Commet=
 Categories=Development;
 Terminal=false
 EOF
 
-sudo wget https://download-cf.jetbrains.com/datagrip/datagrip-2018.3.1.tar.gz
-sudo tar -xzvf datagrip-2018.3.1.tar.gz
-sudo rm datagrip-2018.3.1.tar.gz
+sudo wget https://download-cf.jetbrains.com/datagrip/datagrip-2019.1.2.tar.gz
+sudo tar -xzvf datagrip-2019.1.2.tar.gz
+sudo rm datagrip-2019.1.2.tar.gz
 sudo tee /usr/share/applications/jetbrains-datagrip.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=DataGrip
-Icon=/opt/DataGrip-2018.3.1/bin/datagrip.svg
-Exec="/opt/DataGrip-2018.3.1/bin/datagrip.sh"
+Icon=/opt/DataGrip-2019.1.2/bin/datagrip.svg
+Exec="/opt/DataGrip-2019.1.2/bin/datagrip.sh"
 Commet=
 Categories=Development;
 Terminal=false
 EOF
 
-sudo wget https://download-cf.jetbrains.com/python/pycharm-professional-2018.3.4.tar.gz
-sudo tar -xzvf pycharm-professional-2018.3.4.tar.gz
-sudo rm pycharm-professional-2018.3.4.tar.gz
-sudo mv pycharm-2018.3.4 PyCharm-2018.3.4
-# TODO does not show the launcher
-sudo tee /usr/share/applications/jetbrains-pycharm.desktop << EOF
-cat jetbrains-pycharm.desktop
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=PyCharm
-Icon=/opt/PyCharm-2018.3.4/bin/pycharm.svg
-Exec="/opt/PyCharm-2018.3.4/bin/pycharm.sh"
-Commet=
-Categories=Development;
-Terminal=false
-EOF
+# Customization
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
+gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
+# Upgrade
 sudo apt update
 sudo apt --fix-broken install
-sudo apt upgrade
+sudo apt upgrade -y
