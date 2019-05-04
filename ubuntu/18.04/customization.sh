@@ -31,3 +31,6 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 
 # Night mode at sunrise and sunset <- Activated
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
+
+# Favorite applications
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'thunderbird.desktop', 'org.gnome.Terminal.desktop', 'google-chrome.desktop', 'org.keepassxc.KeePassXC.desktop', 'jetbrains-phpstorm.desktop', 'jetbrains-datagrip.desktop', 'mongodb-compass.desktop', 'postman_postman.desktop', 'org.remmina.Remmina.desktop', 'slack_slack.desktop', 'syntevo-smartgit.desktop', 'sublime_text.desktop', 'telegram-desktop_telegramdesktop.desktop', 'org.gnome.Screenshot.desktop', 'virtualbox.desktop']"
