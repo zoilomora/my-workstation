@@ -8,18 +8,18 @@ sudo apt full-upgrade -y
 
 # Remove packages by default
 sudo apt remove -y \
-	ubuntu-web-launchers \
-	gnome-calendar \
-	gnome-mines \
-	gnome-mahjongg \
-	gnome-sudoku \
-	aisleriot \
-	simple-scan \
-	rhythmbox \
-	totem \
-	cheese \
-	shotwell \
-	gnome-todo
+    ubuntu-web-launchers \
+    gnome-calendar \
+    gnome-mines \
+    gnome-mahjongg \
+    gnome-sudoku \
+    aisleriot \
+    simple-scan \
+    rhythmbox \
+    totem \
+    cheese \
+    shotwell \
+    gnome-todo
 
 # Remove snap packages
 sudo snap remove \
@@ -76,6 +76,14 @@ sudo apt install -y \
     unrar \
     htop
 
+# Installation - Sensors
+sudo apt install -y \
+    lm-sensors \
+    psensor
+
+# Detect hardware sensors
+(while :; do echo ""; done) | sudo sensors-detect
+
 # Installation - Network Utilities
 sudo apt install -y \
     net-tools \
@@ -88,11 +96,6 @@ sudo apt install -y \
     ntfs-3g \
     gparted \
     ncdu
-
-# Installation - Sensors
-sudo apt install -y \
-    lm-sensors \
-    psensor
 
 # Installation - Utilities
 sudo apt install -y \
@@ -166,15 +169,12 @@ wget https://www.syntevo.com/downloads/smartgit/smartgit-18_2_7.deb
 sudo dpkg -i smartgit-18_2_7.deb
 rm smartgit-18_2_7.deb
 
-# Detect hardware sensors
-(while :; do echo ""; done) | sudo sensors-detect
-
-# ZSH
+# Installation - Oh My Zsh
 echo
-echo "+------------------------------------------------------------------------------------+"
-echo "| Z shell will be installed, after installation it will appear inside the new shell. |"
-echo "| Type the 'exit' command to exit Z shell and continue the installation              |"
-echo "+------------------------------------------------------------------------------------+"
+echo "+--------------------------------------------------------------------------------------+"
+echo "| Oh My Zsh will be installed, after installation it will appear inside the new shell. |"
+echo "| Type the 'exit' command to exit Z shell and continue the installation                |"
+echo "+--------------------------------------------------------------------------------------+"
 echo
 read -p "Press enter to continue"
 
