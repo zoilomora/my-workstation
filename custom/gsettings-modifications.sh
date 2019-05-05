@@ -1,6 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-set -e
+echo
+echo "################################################################"
+echo "  GSettings Modifications                                       "
+echo "################################################################"
+echo
 
 # Icons on the desktop <- Disabled
 gsettings set org.gnome.desktop.background show-desktop-icons false

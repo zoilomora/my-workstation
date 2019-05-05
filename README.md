@@ -12,8 +12,8 @@ Installation and customization script for my workstation.
         
         $ wget https://github.com/zoilomora/my-workstation/archive/master.zip
         $ unzip master.zip
-        $ cd my-workstation-master/ubuntu/18.04/
-        $ ./install.sh
+        $ cd my-workstation-master/
+        $ ./setup.sh
 
 ## License
 Licensed under the [MIT license](http://opensource.org/licenses/MIT)
