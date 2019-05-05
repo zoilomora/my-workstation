@@ -193,6 +193,9 @@ cd ~
 # Install IDE
 cd /opt
 
+sudo apt install -y \
+    libcanberra-gtk-module
+
 sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2019.1.1.tar.gz
 sudo tar -xzvf PhpStorm-2019.1.1.tar.gz
 sudo rm PhpStorm-2019.1.1.tar.gz
