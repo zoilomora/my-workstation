@@ -13,7 +13,7 @@ if ! [ -a "/opt/DataGrip-2019.1.2" ]; then
     sudo apt install -y libcanberra-gtk-module
 
     sudo wget https://download-cf.jetbrains.com/datagrip/datagrip-2019.1.2.tar.gz
-    sudo tar -xzvf datagrip-2019.1.2.tar.gz
+    sudo tar -xzf datagrip-2019.1.2.tar.gz
     sudo rm datagrip-2019.1.2.tar.gz
 
     sudo tee /usr/share/applications/jetbrains-datagrip.desktop << EOF

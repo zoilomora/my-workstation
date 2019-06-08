@@ -13,7 +13,7 @@ if ! [ -a "/opt/PhpStorm-2019.1.1" ]; then
     sudo apt install -y libcanberra-gtk-module
 
     sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2019.1.1.tar.gz
-    sudo tar -xzvf PhpStorm-2019.1.1.tar.gz
+    sudo tar -xzf PhpStorm-2019.1.1.tar.gz
     sudo rm PhpStorm-2019.1.1.tar.gz
     sudo mv PhpStorm-191.6707.66 PhpStorm-2019.1.1
 

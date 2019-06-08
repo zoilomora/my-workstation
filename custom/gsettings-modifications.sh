@@ -28,7 +28,7 @@ gsettings set org.gnome.desktop.sound event-sounds true
 gsettings set org.gnome.desktop.wm.preferences action-middle-click-titlebar 'none'
 
 # Position of window buttons <- macOS
-gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+# gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
 
 # Night mode <- Activated
 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
@@ -37,4 +37,4 @@ gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true
 gsettings set org.gnome.settings-daemon.plugins.color night-light-schedule-automatic true
 
 # Favorite applications
-gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'thunderbird.desktop', 'org.gnome.Terminal.desktop', 'google-chrome.desktop', 'org.keepassxc.KeePassXC.desktop', 'jetbrains-phpstorm.desktop', 'jetbrains-datagrip.desktop', 'mongodb-compass.desktop', 'postman_postman.desktop', 'org.remmina.Remmina.desktop', 'slack_slack.desktop', 'syntevo-smartgit.desktop', 'sublime_text.desktop', 'telegram-desktop_telegramdesktop.desktop', 'org.gnome.Screenshot.desktop', 'virtualbox.desktop']"
+gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'thunderbird.desktop', 'org.gnome.Terminal.desktop', 'google-chrome.desktop', 'org.keepassxc.KeePassXC.desktop', 'jetbrains-phpstorm.desktop', 'jetbrains-datagrip.desktop', 'mongodb-compass.desktop', 'postman_postman.desktop', 'org.remmina.Remmina.desktop', 'slack_slack.desktop', 'sublime_text.desktop', 'telegram-desktop_telegramdesktop.desktop', 'org.gnome.Screenshot.desktop', 'virtualbox.desktop']"

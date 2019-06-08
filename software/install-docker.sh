@@ -9,7 +9,7 @@ echo
 repositories=$(grep ^[^#] /etc/apt/sources.list /etc/apt/sources.list.d/*)
 if ! repository=$(echo "$repositories" | grep "download.docker.com"); then
     wget -qO - https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository -y -u "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo add-apt-repository -y -u "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable test"
 fi
 
 if ! location=$(type -p "docker"); then
