@@ -60,6 +60,7 @@ sudo apt install -y \
 ./software/install-youtube-dl.sh
 ./software/install-mediainfo-gui.sh
 ./software/install-git.sh
+./software/install-smartgit.sh
 ./software/install-telegram.sh
 ./software/install-slack.sh
 ./software/install-phpstorm.sh
