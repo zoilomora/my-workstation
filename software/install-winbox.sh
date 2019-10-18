@@ -10,9 +10,11 @@ if ! location=$(type -p "winbox"); then
     SETUP_DIR="$(pwd)"
     cd /tmp
 
-    git clone https://github.com/mriza/winbox-installer.git
-    cd winbox-installer
+    wget https://github.com/mriza/winbox-installer/archive/master.zip
+    unzip master.zip
+    cd winbox-installer-master
     sudo ./winbox-setup install
 
     cd ${SETUP_DIR}
+    rm -r /tmp/winbox-installer-master
 fi
