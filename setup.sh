@@ -61,6 +61,7 @@ sudo apt install -y \
 ./software/install-mediainfo-gui.sh
 ./software/install-git.sh
 ./software/install-smartgit.sh
+./software/install-winbox.sh
 ./software/install-telegram.sh
 ./software/install-slack.sh
 ./software/install-phpstorm.sh
@@ -68,6 +69,7 @@ sudo apt install -y \
 ./software/install-mongodb-compass.sh
 ./software/install-postman.sh
 ./software/install-virtualbox.sh
+./software/install-spotify.sh
 ./software/install-zsh.sh
 
 # Personalization
