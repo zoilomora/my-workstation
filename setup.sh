@@ -55,6 +55,7 @@ sudo apt install -y \
 ./software/install-google-chrome.sh
 ./software/install-filezilla.sh
 ./software/install-sublime-text.sh
+./software/install-visual-studio-code.sh
 ./software/install-vlc.sh
 ./software/install-xfburn.sh
 ./software/install-youtube-dl.sh
