@@ -74,7 +74,6 @@ sudo apt install -y \
 ./software/install-zsh.sh
 
 # Personalization
-./custom/install-communitheme.sh
 ./custom/gsettings-modifications.sh
 
 echo
