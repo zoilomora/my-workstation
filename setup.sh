@@ -68,7 +68,7 @@ sudo apt install -y \
 ./software/install-phpstorm.sh
 ./software/install-datagrip.sh
 ./software/install-mongodb-compass.sh
-./software/install-postman.sh
+./software/install-insomnia.sh
 ./software/install-virtualbox.sh
 ./software/install-spotify.sh
 ./software/install-zsh.sh
