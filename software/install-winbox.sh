@@ -10,7 +10,7 @@ if ! location=$(type -p "winbox"); then
     SETUP_DIR="$(pwd)"
     cd /tmp
 
-    wget https://github.com/zoilomora/winbox-installer/archive/master.zip
+    wget https://github.com/mriza/winbox-installer/archive/master.zip
     unzip master.zip
     cd winbox-installer-master
     sudo ./winbox-setup install
