@@ -12,14 +12,5 @@ if ! repository=$(echo "$repositories" | grep "remmina-ppa-team/remmina-next"); 
 fi
 
 if ! location=$(type -p "remmina"); then
-    sudo apt install -y \
-        remmina \
-        libfreerdp-plugins-standard \
-        remmina-plugin-secret \
-        remmina-plugin-vnc \
-        remmina-plugin-exec \
-        remmina-plugin-nx \
-        remmina-plugin-spice \
-        remmina-plugin-telepathy \
-        remmina-plugin-xdmcp
+    sudo apt install -y remmina
 fi

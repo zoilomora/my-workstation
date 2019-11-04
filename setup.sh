@@ -55,23 +55,25 @@ sudo apt install -y \
 ./software/install-google-chrome.sh
 ./software/install-filezilla.sh
 ./software/install-sublime-text.sh
+./software/install-visual-studio-code.sh
 ./software/install-vlc.sh
 ./software/install-xfburn.sh
 ./software/install-youtube-dl.sh
 ./software/install-mediainfo-gui.sh
 ./software/install-git.sh
 ./software/install-smartgit.sh
+./software/install-winbox.sh
 ./software/install-telegram.sh
 ./software/install-slack.sh
 ./software/install-phpstorm.sh
 ./software/install-datagrip.sh
 ./software/install-mongodb-compass.sh
-./software/install-postman.sh
+./software/install-insomnia.sh
 ./software/install-virtualbox.sh
+./software/install-spotify.sh
 ./software/install-zsh.sh
 
 # Personalization
-./custom/install-communitheme.sh
 ./custom/gsettings-modifications.sh
 
 echo

@@ -2,10 +2,10 @@
 
 echo
 echo "################################################################"
-echo "  Installing Communitheme                                       "
+echo "  Installing Insomnia                                           "
 echo "################################################################"
 echo
 
-if ! package=$(snap list | grep "communitheme"); then
-    sudo snap install communitheme
+if ! location=$(type -p "insomnia"); then
+    sudo snap install insomnia
 fi
