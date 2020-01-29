@@ -75,6 +75,7 @@ sudo apt install -y \
 ./software/install-zsh.sh
 
 # Personalization
+./custom/gtile-gnome-shell-extension.sh
 ./custom/gsettings-modifications.sh
 
 echo
