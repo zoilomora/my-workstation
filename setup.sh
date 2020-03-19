@@ -54,7 +54,6 @@ sudo apt install -y \
 ./software/install-docker.sh
 ./software/install-google-chrome.sh
 ./software/install-filezilla.sh
-./software/install-sublime-text.sh
 ./software/install-visual-studio-code.sh
 ./software/install-vlc.sh
 ./software/install-xfburn.sh
@@ -70,8 +69,8 @@ sudo apt install -y \
 ./software/install-mongodb-compass.sh
 ./software/install-insomnia.sh
 ./software/install-virtualbox.sh
-./software/install-spotify.sh
 ./software/install-anydesk.sh
+./software/install-camunda.sh
 ./software/install-zsh.sh
 
 # Personalization
