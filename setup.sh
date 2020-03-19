@@ -70,6 +70,7 @@ sudo apt install -y \
 ./software/install-insomnia.sh
 ./software/install-virtualbox.sh
 ./software/install-anydesk.sh
+./software/install-camunda.sh
 ./software/install-zsh.sh
 
 # Personalization
