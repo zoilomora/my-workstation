@@ -6,24 +6,24 @@ echo "  Installing PhpStorm                                           "
 echo "################################################################"
 echo
 
-if ! [ -a "/opt/PhpStorm-2019.3.4" ]; then
+if ! [ -a "/opt/PhpStorm-2020.1.1" ]; then
     SETUP_DIR="$(pwd)"
     cd /opt
 
     sudo apt install -y libcanberra-gtk-module
 
-    sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2019.3.4.tar.gz
-    sudo tar -xzf PhpStorm-2019.3.4.tar.gz
-    sudo rm PhpStorm-2019.3.4.tar.gz
-    sudo mv PhpStorm-193.6911.26 PhpStorm-2019.3.4
+    sudo wget https://download-cf.jetbrains.com/webide/PhpStorm-2020.1.1.tar.gz
+    sudo tar -xzf PhpStorm-2020.1.1.tar.gz
+    sudo rm PhpStorm-2020.1.1.tar.gz
+    sudo mv PhpStorm-201.7223.96 PhpStorm-2020.1.1
 
     sudo tee /usr/share/applications/jetbrains-phpstorm.desktop << EOF
 [Desktop Entry]
 Version=1.0
 Type=Application
 Name=PhpStorm
-Icon=/opt/PhpStorm-2019.3.4/bin/phpstorm.svg
-Exec="/opt/PhpStorm-2019.3.4/bin/phpstorm.sh"
+Icon=/opt/PhpStorm-2020.1.1/bin/phpstorm.svg
+Exec="/opt/PhpStorm-2020.1.1/bin/phpstorm.sh"
 Commet=
 Categories=Development;
 Terminal=false
