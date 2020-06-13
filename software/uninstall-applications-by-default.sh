@@ -7,7 +7,6 @@ echo "################################################################"
 echo
 
 sudo apt remove -y \
-    ubuntu-web-launchers \
     gnome-calendar \
     gnome-mines \
     gnome-mahjongg \
