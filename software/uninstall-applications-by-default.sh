@@ -18,7 +18,3 @@ sudo apt remove -y \
     cheese \
     shotwell \
     gnome-todo
-
-sudo snap remove \
-    gnome-calculator \
-    remmina
