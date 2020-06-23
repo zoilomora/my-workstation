@@ -7,7 +7,7 @@ echo "################################################################"
 echo
 
 GTILE_UUID="gTile@vibou"
-GTILE_VERSION="33"
+GTILE_VERSION="35"
 
 if ! [ -a "~/.local/share/gnome-shell/extensions/$GTILE_UUID" ]; then
     wget -O /tmp/gTilevibou.v$GTILE_VERSION.shell-extension.zip https://extensions.gnome.org/extension-data/gTilevibou.v$GTILE_VERSION.shell-extension.zip

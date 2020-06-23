@@ -7,7 +7,6 @@ echo "################################################################"
 echo
 
 sudo apt remove -y \
-    ubuntu-web-launchers \
     gnome-calendar \
     gnome-mines \
     gnome-mahjongg \
@@ -19,7 +18,3 @@ sudo apt remove -y \
     cheese \
     shotwell \
     gnome-todo
-
-sudo snap remove \
-    gnome-calculator \
-    remmina

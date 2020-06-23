@@ -7,8 +7,8 @@ echo "################################################################"
 echo
 
 if ! [ -a "/usr/share/smartgit" ]; then
-    wget -O /tmp/smartgit-19_1_7.deb https://www.syntevo.com/downloads/smartgit/smartgit-19_1_7.deb
+    wget -O /tmp/smartgit-20_1_2.deb https://www.syntevo.com/downloads/smartgit/smartgit-20_1_2.deb
 
-    sudo dpkg -i /tmp/smartgit-19_1_7.deb
-    rm /tmp/smartgit-19_1_7.deb
+    sudo dpkg -i /tmp/smartgit-20_1_2.deb
+    rm /tmp/smartgit-20_1_2.deb
 fi

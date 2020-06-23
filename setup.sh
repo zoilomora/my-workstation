@@ -67,10 +67,12 @@ sudo apt install -y \
 ./software/install-phpstorm.sh
 ./software/install-datagrip.sh
 ./software/install-mongodb-compass.sh
+./software/install-redis-desktop-manager.sh
 ./software/install-insomnia.sh
 ./software/install-virtualbox.sh
 ./software/install-anydesk.sh
 ./software/install-camunda.sh
+./software/install-diodon.sh
 ./software/install-zsh.sh
 
 # Personalization
