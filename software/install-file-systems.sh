@@ -10,8 +10,8 @@ if ! package=$(dpkg-query --list | grep "exfat-fuse"); then
     sudo apt install -y exfat-fuse
 fi
 
-if ! package=$(dpkg-query --list | grep "exfat-utils"); then
-    sudo apt install -y exfat-utils
+if ! package=$(dpkg-query --list | grep "exfatprogs"); then
+    sudo apt install -y exfatprogs
 fi
 
 if ! package=$(dpkg-query --list | grep "ntfs-3g"); then

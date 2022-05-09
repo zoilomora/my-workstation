@@ -57,7 +57,7 @@ sudo apt install -y \
 ./software/install-visual-studio-code.sh
 ./software/install-vlc.sh
 ./software/install-xfburn.sh
-./software/install-youtube-dl.sh
+./software/install-yt-dlp.sh
 ./software/install-mediainfo-gui.sh
 ./software/install-git.sh
 ./software/install-smartgit.sh
@@ -68,16 +68,15 @@ sudo apt install -y \
 ./software/install-datagrip.sh
 ./software/install-mongodb-compass.sh
 ./software/install-redis-desktop-manager.sh
-./software/install-insomnia.sh
-./software/install-virtualbox.sh
+#./software/install-insomnia.sh
+#./software/install-virtualbox.sh
 ./software/install-anydesk.sh
 ./software/install-camunda.sh
-./software/install-diodon.sh
 ./software/install-zsh.sh
 
 # Personalization
-./custom/gtile-gnome-shell-extension.sh
-./custom/gsettings-modifications.sh
+#./custom/gtile-gnome-shell-extension.sh
+#./custom/gsettings-modifications.sh
 
 echo
 echo "################################################################"

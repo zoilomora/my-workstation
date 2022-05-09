@@ -10,6 +10,6 @@ if ! location=$(type -p "gnome-calculator"); then
   	sudo apt install -y gnome-calculator
 fi
 
-if ! package=$(dpkg-query --list | grep "gnome-tweak-tool"); then
-    sudo apt install -y gnome-tweak-tool
+if ! package=$(dpkg-query --list | grep "gnome-tweaks"); then
+    sudo apt install -y gnome-tweaks
 fi
