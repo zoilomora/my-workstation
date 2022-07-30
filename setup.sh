@@ -46,7 +46,7 @@ sudo apt install -y \
 ./software/install-unrar.sh
 ./software/install-htop.sh
 ./software/install-ncdu.sh
-#./software/install-screenfetch.sh
+./software/install-neofetch.sh
 ./software/install-gparted.sh
 ./software/install-sensors.sh
 ./software/install-remmina.sh
