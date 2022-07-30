@@ -77,8 +77,9 @@ sudo apt install -y \
 ./software/install-zsh.sh
 
 # Personalization
-#./custom/gtile-gnome-shell-extension.sh
-#./custom/gsettings-modifications.sh
+./custom/dash-to-dock-gnome-shell-extension.sh
+./custom/gtile-gnome-shell-extension.sh
+./custom/gsettings-modifications.sh
 
 echo
 echo "################################################################"
