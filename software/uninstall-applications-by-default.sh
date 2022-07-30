@@ -42,6 +42,7 @@ sudo apt remove -y \
 
 # Games
 sudo apt remove -y \
+    aisleriot \
     five-or-more \
     four-in-a-row \
     hitori \
