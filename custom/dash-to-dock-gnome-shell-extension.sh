@@ -14,5 +14,5 @@ if ! [ -a "~/.local/share/gnome-shell/extensions/$GTILE_UUID" ]; then
     mkdir -p ~/.local/share/gnome-shell/extensions/$DASHTODOCK_UUID
     unzip -q /tmp/dash-to-dockmicxgx.gmail.com.v$DASHTODOCK_VERSION.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/$DASHTODOCK_UUID
     rm /tmp/dash-to-dockmicxgx.gmail.com.v$DASHTODOCK_VERSION.shell-extension.zip
-    #gnome-extensions enable $DASHTODOCK_UUID
+    # gnome-extensions enable $DASHTODOCK_UUID
 fi
