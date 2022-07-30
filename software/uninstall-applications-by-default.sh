@@ -27,14 +27,13 @@ sudo apt remove -y \
     gnome-todo \
     gnome-weather
 
+# LibreOffice
+sudo apt remove --purge -y libreoffice*
+
 # Apps
 sudo apt remove -y \
     cheese \
     evolution \
-    libreoffice-calc \
-    libreoffice-draw \
-    libreoffice-impress \
-    libreoffice-writer \
     malcontent \
     rhythmbox \
     shotwell \
