@@ -63,7 +63,6 @@ sudo apt install -y \
 ./software/install-smartgit.sh
 ./software/install-winbox.sh
 ./software/install-telegram.sh
-./software/install-slack.sh
 ./software/install-phpstorm.sh
 ./software/install-datagrip.sh
 ./software/install-mongodb-compass.sh
