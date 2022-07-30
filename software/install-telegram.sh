@@ -7,5 +7,5 @@ echo "################################################################"
 echo
 
 if ! location=$(type -p "telegram-desktop"); then
-  	sudo snap install telegram-desktop
+    sudo apt install -y telegram-desktop
 fi
