@@ -10,7 +10,7 @@ if ! [ -a "/opt/Postman" ]; then
     SETUP_DIR="$(pwd)"
     cd /opt
 
-    sudo curl -L -o postman-linux-x64.tar.gz https://dl.pstmn.io/download/latest/linux64/
+    sudo curl -fsSL -o postman-linux-x64.tar.gz https://dl.pstmn.io/download/latest/linux64/
     sudo tar -xzf postman-linux-x64.tar.gz
     sudo rm postman-linux-x64.tar.gz
     sudo ln -s /opt/Postman/Postman /usr/local/bin/postman
