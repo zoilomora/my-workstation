@@ -14,7 +14,7 @@ Execute the following command in the bash terminal:
     TODO
 
 ## Tested on
-- [Debian 11.4.0 (Bullseye)](https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/)
+- [Debian 11.4.0 (Bullseye)](https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/): **Remember to give sudoers access to your user with `visudo` command.**
 
 ## License
 Licensed under the [MIT license](http://opensource.org/licenses/MIT)
