@@ -7,5 +7,5 @@ echo "################################################################"
 echo
 
 if ! location=$(type -p "vlc"); then
-  	sudo snap install vlc
+  	sudo apt install -y vlc
 fi
