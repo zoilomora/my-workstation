@@ -34,7 +34,7 @@ sudo apt remove --purge -y libreoffice*
 sudo apt remove -y \
     cheese \
     evolution \
-    malcontent \
+#    malcontent \
     rhythmbox \
     shotwell \
     totem \
