@@ -17,6 +17,5 @@ if ! location=$(type -p "ice"); then
 fi
 
 if ! location=$(type -p "chromium"); then
-  	sudo apt install -y chromium
-  	sudo ln -s /usr/bin/chromium /usr/bin/chromium-browser
+  	sudo apt install -y chromium-browser
 fi
