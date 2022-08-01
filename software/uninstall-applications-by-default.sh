@@ -52,5 +52,4 @@ sudo apt remove -y \
     swell-foop \
     tali
 
-
 sudo apt autoremove -y
