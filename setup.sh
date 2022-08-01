@@ -37,7 +37,7 @@ sudo apt install -y \
 
 # Software installation
 ./software/uninstall-applications-by-default.sh
-./software/install-ubuntu-restricted-extras.sh
+./software/install-ttf-mscorefont.sh
 ./software/install-gnome-applications.sh
 ./software/install-file-systems.sh
 ./software/install-net-tools.sh
