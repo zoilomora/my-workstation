@@ -6,7 +6,7 @@ sudo apt install -y \
     sassc \
     ninja-build
 
-sudo pip3 install -y \
+sudo pip3 install \
     meson
 
 cd /tmp
@@ -22,7 +22,7 @@ cd build
 sudo ninja install
 
 cd /tmp
-rm -Rf /tmp/yaru-22.04.4
+sudo rm -Rf /tmp/yaru-22.04.4
 
 sudo pip3 uninstall -y meson
 sudo apt remove --purge -y \
@@ -30,7 +30,7 @@ sudo apt remove --purge -y \
     sassc \
     ninja-build
 
-sudo apt autoremove
+sudo apt autoremove -y
 
 # https://www.gnome-look.org/p/1252100/
 # sudo cp -R Yaru-light /usr/share/themes
