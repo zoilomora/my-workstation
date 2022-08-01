@@ -21,6 +21,9 @@ meson build
 cd build
 sudo ninja install
 
+cd /tmp
+rm -Rf /tmp/yaru-22.04.4
+
 sudo pip3 uninstall -y meson
 sudo apt remove --purge -y \
     libgtk-3-dev \
