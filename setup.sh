@@ -37,7 +37,7 @@ sudo apt install -y \
 
 # Software installation
 ./software/uninstall-applications-by-default.sh
-./software/install-ubuntu-restricted-extras.sh
+./software/install-ttf-mscorefont.sh
 ./software/install-gnome-applications.sh
 ./software/install-file-systems.sh
 ./software/install-net-tools.sh
@@ -46,11 +46,11 @@ sudo apt install -y \
 ./software/install-unrar.sh
 ./software/install-htop.sh
 ./software/install-ncdu.sh
-./software/install-screenfetch.sh
+./software/install-neofetch.sh
 ./software/install-gparted.sh
 ./software/install-sensors.sh
 ./software/install-remmina.sh
-./software/install-keepassxc.sh
+#./software/install-keepassxc.sh
 ./software/install-docker.sh
 ./software/install-google-chrome.sh
 ./software/install-filezilla.sh
@@ -63,20 +63,23 @@ sudo apt install -y \
 ./software/install-smartgit.sh
 ./software/install-winbox.sh
 ./software/install-telegram.sh
-./software/install-slack.sh
-./software/install-phpstorm.sh
-./software/install-datagrip.sh
-./software/install-mongodb-compass.sh
-./software/install-redis-desktop-manager.sh
+#./software/install-slack.sh
+./software/install-jetbrains-toolbox.sh
+#./software/install-phpstorm.sh
+#./software/install-datagrip.sh
+#./software/install-mongodb-compass.sh
+#./software/install-redis-desktop-manager.sh
+./software/install-postman.sh
 #./software/install-insomnia.sh
 #./software/install-virtualbox.sh
-./software/install-anydesk.sh
-./software/install-camunda.sh
+#./software/install-anydesk.sh
+#./software/install-camunda.sh
 ./software/install-zsh.sh
 
 # Personalization
-#./custom/gtile-gnome-shell-extension.sh
-#./custom/gsettings-modifications.sh
+./custom/dash-to-dock-gnome-shell-extension.sh
+./custom/gtile-gnome-shell-extension.sh
+./custom/gsettings-modifications.sh
 
 echo
 echo "################################################################"

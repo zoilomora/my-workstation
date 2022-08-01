@@ -14,5 +14,5 @@ if ! [ -a "~/.local/share/gnome-shell/extensions/$GTILE_UUID" ]; then
     mkdir -p ~/.local/share/gnome-shell/extensions/$GTILE_UUID
     unzip -q /tmp/gTilevibou.v$GTILE_VERSION.shell-extension.zip -d ~/.local/share/gnome-shell/extensions/$GTILE_UUID
     rm /tmp/gTilevibou.v$GTILE_VERSION.shell-extension.zip
-    gnome-extensions enable $GTILE_UUID
+    # gnome-extensions enable $GTILE_UUID
 fi
