@@ -51,3 +51,6 @@ sudo apt remove -y \
     quadrapassel \
     swell-foop \
     tali
+
+
+sudo apt autoremove -y
