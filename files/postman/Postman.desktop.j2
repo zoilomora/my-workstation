@@ -1,0 +1,12 @@
+{{ ansible_managed | comment }}
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Postman REST Client
+Icon={{ application_install_dir }}/app/resources/app/assets/icon.png
+Exec="{{ application_install_dir }}/Postman" %f
+Comment=Postman REST Client Desktop App
+Categories=Development;
+Terminal=false
+StartupWMClass=Postman

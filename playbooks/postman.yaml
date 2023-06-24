@@ -1,0 +1,48 @@
+- hosts: all
+  become: true
+  vars:
+    files_dir: ../files/postman
+    application_name: "Postman"
+    application_install_dir: '/opt/Postman'
+    application_download_url: "https://dl.pstmn.io/download/latest/linux64"
+    archive_file_name: "Postman-linux-x64-latest.tar.gz"
+    temporary_file_name: "/tmp/{{ archive_file_name }}"
+
+  tasks:
+    - name: Check if "{{ application_name }}" is already installed
+      ansible.builtin.stat:
+        path: "{{ application_install_dir }}"
+      register: is_installed
+
+    - name: Installation process
+      when: is_installed is defined and not is_installed.stat.exists
+      block:
+        - name: Create "{{ application_name }}" installation directory
+          ansible.builtin.file:
+            path: "{{ application_install_dir }}"
+            state: directory
+
+        - name: Download "{{ application_name }}"
+          ansible.builtin.get_url:
+            url: "{{ application_download_url }}"
+            dest: "{{ temporary_file_name }}"
+
+        - name: Unpack "{{ application_name }}" package
+          ansible.builtin.unarchive:
+            src: "{{ temporary_file_name }}"
+            dest: "/opt"
+
+        - name: Install Postman link
+          ansible.builtin.file:
+            src: '{{ application_install_dir }}/Postman'
+            dest: '/usr/local/bin/postman'
+            state: link
+
+        - name: Install Postman desktop file
+          become: yes
+          ansible.builtin.template:
+            src: "{{ files_dir }}/Postman.desktop.j2"
+            dest: '/usr/share/applications/postman.desktop'
+            owner: root
+            group: root
+            mode: '0644'

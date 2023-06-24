@@ -1,0 +1,40 @@
+- hosts: all
+  become: true
+  vars:
+    application_name: "WinBox"
+    installer_download_url: "https://github.com/mriza/winbox-installer/archive/master.tar.gz"
+    installer_sha256: sha256:f103b565d3e55fde44b8294061b29a9b00f68ab8c54615e074c31c82e0db527c
+    archive_file_name: "winbox-installer.tar.gz"
+    temporary_file_name: "/tmp/{{ archive_file_name }}"
+
+  tasks:
+    - name: Check if "{{ application_name }}" is already installed
+      ansible.builtin.stat:
+        path: "/usr/share/applications/winbox.desktop"
+      register: is_installed
+
+    - name: Installation process
+      when: is_installed is defined and not is_installed.stat.exists
+      block:
+        - name: Download "{{ application_name }}"
+          ansible.builtin.get_url:
+            url: "{{ installer_download_url }}"
+            dest: "{{ temporary_file_name }}"
+
+        - name: Unpack "{{ application_name }}" package
+          ansible.builtin.unarchive:
+            src: "{{ temporary_file_name }}"
+            dest: "/tmp"
+
+        - name: Install to "{{ application_name }}"
+          ansible.builtin.command:
+            cmd: "/tmp/winbox-installer-master/winbox-setup install"
+            chdir: "/tmp/winbox-installer-master"
+
+        - name: Remove temporary files
+          ansible.builtin.file:
+            path: "/tmp/{{ item }}"
+            state: absent
+          loop:
+            - "{{ archive_file_name }}"
+            - "winbox-installer-master"

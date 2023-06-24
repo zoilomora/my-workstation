@@ -1,0 +1,59 @@
+- hosts: all
+  become: true
+  vars:
+    toolbox_version: "1.28.1.15219"
+    toolbox_install_dir: "/opt/jetbrains-toolbox"
+    toolbox_install_for_user: "{{ lookup('env', 'USERNAME') }}"
+    application_name: "JetBrains Toolbox"
+    toolbox_install_file: "jetbrains-toolbox"
+    archive_file_name: "{{ toolbox_install_file }}-{{ toolbox_version }}.tar.gz"
+    download_url: "https://download.jetbrains.com/toolbox/{{ archive_file_name }}"
+    temporary_file_name: "/tmp/{{ archive_file_name }}"
+    toolbox_install_path: "{{ toolbox_install_dir }}/{{ toolbox_install_file }}"
+
+  tasks:
+    - name: Check if "{{ application_name }}" is already installed
+      ansible.builtin.stat:
+        path: "{{ toolbox_install_dir }}"
+      register: is_installed
+
+    - name: "Installation process"
+      when: is_installed is defined and not is_installed.stat.exists
+      block:
+        - name: Create "{{ application_name }}" installation directory
+          ansible.builtin.file:
+            path: "{{ toolbox_install_dir }}"
+            state: directory
+
+        - name: Download "{{ application_name }}" of version "{{ toolbox_version }}"
+          ansible.builtin.get_url:
+            url: "{{ download_url }}"
+            dest: "{{ temporary_file_name }}"
+
+        - name: Install to "{{ toolbox_install_dir }}"
+          ansible.builtin.unarchive:
+            src: "{{ temporary_file_name }}"
+            dest: "{{ toolbox_install_dir }}"
+            remote_src: true
+
+        - name: Move executable from the folder
+          ansible.builtin.copy:
+            src: "{{ toolbox_install_dir }}/{{ toolbox_install_file }}-{{ toolbox_version }}/{{ toolbox_install_file }}"
+            dest: "{{ toolbox_install_path }}"
+            remote_src: true
+            owner: "root"
+            group: "root"
+            mode: '0777'
+
+        - name: Remove temporary folders and files
+          ansible.builtin.file:
+            path: "{{ item }}"
+            state: "absent"
+          with_items:
+            - "{{ toolbox_install_dir }}/{{ toolbox_install_file }}-{{ toolbox_version }}"
+            - "{{ temporary_file_name }}"
+
+        - name: Run as user to finish installation
+          ansible.builtin.command: "{{ toolbox_install_path }}"
+          become: true
+          become_user: "{{ toolbox_install_for_user }}"
