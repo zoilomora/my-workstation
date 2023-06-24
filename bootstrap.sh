@@ -11,7 +11,11 @@ while [[ -z ${_pretty} ]]; do
 	printf "enter pretty hostname: "
 	read _pretty
 done
+
 sudo hostnamectl set-hostname --static ${_static}
 sudo hostnamectl set-hostname --pretty "${_pretty}"
 
-sudo dnf install -y ansible ansible-collection-community-general
+sudo apt install python3 python3-venv python3-pip -y
+python3 -m venv ansible
+source ansible/bin/activate
+python3 -m pip install ansible
