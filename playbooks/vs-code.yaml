@@ -32,7 +32,7 @@
 
     - name: Check if "VS Code" repository is already installed
       ansible.builtin.stat:
-        path: "/etc/apt/sources.list.d/vs-code.list"
+        path: "/etc/apt/sources.list.d/vscode.list"
       register: vscode_repository
 
     - name: Install "VS Code" repository
@@ -44,7 +44,7 @@
         - name: Add "VS Code" repository into sources list
           ansible.builtin.apt_repository:
             repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
-            filename: vs-code
+            filename: vscode
             state: present
       when: vscode_repository is defined and not vscode_repository.stat.exists
 
