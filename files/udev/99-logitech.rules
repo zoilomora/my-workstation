@@ -1,0 +1,2 @@
+# Set power line frequency to 50 Hz
+ACTION=="add", SUBSYSTEM=="video4linux", DRIVERS=="uvcvideo", RUN+="/usr/bin/v4l2-ctl --set-ctrl=power_line_frequency=1"

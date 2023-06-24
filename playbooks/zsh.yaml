@@ -1,0 +1,67 @@
+- hosts: all
+  become: true
+  vars:
+    files_dir: ../files/user
+    username: "{{ lookup('env', 'USERNAME') }}"
+    homedir: "/home/{{ username }}"
+
+  tasks:
+    - name: install base packages
+      ansible.builtin.dnf:
+        name:
+          - fonts-powerline
+          - zsh
+          - zsh-autosuggestions
+        state: present
+
+    - name: set zsh as user shell
+      ansible.builtin.user:
+        name: "{{ username }}"
+        shell: /bin/zsh
+
+    - name: Add dotfiles for "{{ username }}"
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0644
+      loop:
+        - {src: "{{ files_dir }}/gitconfig", dest: "{{ homedir }}/.gitconfig"}
+        - {src: "{{ files_dir }}/zshrc", dest: "{{ homedir }}/.zshrc"}
+
+
+
+
+
+    - name: install base packages
+      ansible.builtin.dnf:
+        name: v4l-utils
+        state: present
+
+    - name: Change network range of "Docker"
+      ansible.builtin.copy:
+        src: "{{ files_dir }}/99-logitech.rules"
+        dest: "/etc/udev/rules.d/99-logitech.rules"
+        mode: 0644
+        force: false
+
+
+
+
+#
+#    sh -c "$(wget -qO - https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#
+#    cd ~/.oh-my-zsh/custom/plugins
+#    git clone https://github.com/zsh-users/zsh-autosuggestions
+#
+#    cd ${SETUP_DIR}
+#
+#    sed -i "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"agnoster\"/g" ~/.zshrc
+#    sed -i "s/plugins=(git)/plugins=(\n  git\n  composer\n  docker\n  docker-compose\n  symfony\n  zsh-autosuggestions\n)/g" ~/.zshrc
+#
+#    echo "DEFAULT_USER=\$USER" >> ~/.zshrc
+#    echo "" >> ~/.zshrc
+#    echo "alias zshconfig=\"nano ~/.zshrc\"" >> ~/.zshrc
+#
+#

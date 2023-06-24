@@ -1,0 +1,8 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install "traceroute" package
+      ansible.builtin.apt:
+        name: traceroute
+        state: latest

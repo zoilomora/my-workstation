@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install File Systems packages
+      ansible.builtin.apt:
+        name:
+          - exfat-fuse
+          - exfat-utils
+          - ntfs-3g
+        state: latest

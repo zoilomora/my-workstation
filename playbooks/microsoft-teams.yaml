@@ -1,0 +1,10 @@
+- hosts: all
+  become: true
+  vars:
+    files_dir: ../files/microsoft-teams
+    file_name: teams_1.5.00.23861_amd64.deb
+
+  tasks:
+    - name: Install "Microsoft Teams" from .deb package
+      ansible.builtin.apt:
+        deb: "{{ files_dir }}/{{ file_name }}"

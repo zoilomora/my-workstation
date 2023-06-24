@@ -1,0 +1,10 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install GNOME applications
+      ansible.builtin.apt:
+        name:
+          - gnome-calculator
+          - gnome-tweaks
+        state: latest

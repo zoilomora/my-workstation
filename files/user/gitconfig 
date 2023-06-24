@@ -1,0 +1,18 @@
+[user]
+	name = Zoilo Mora
+	email = zoilo.mora@hotmail.com
+
+[core]
+	editor = nano
+
+[commit]
+	gpgSign = false
+
+[log]
+	date = iso8601
+
+[pull]
+	rebase = false
+
+[fetch]
+	prune = true

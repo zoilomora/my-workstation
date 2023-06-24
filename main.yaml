@@ -1,0 +1,2 @@
+- import_playbook: ./playbooks/curl.yml
+- import_playbook: ./playbooks/camunda-modeler.yml

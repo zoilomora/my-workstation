@@ -1,22 +1,30 @@
-# My Workstation
-Installation and customization script for my workstation.
+# Ansible provision for my workstation
 
 ## Usage
-Execute the following command in the bash terminal:
 
-    $ wget https://github.com/zoilomora/my-workstation/archive/main.zip
-    $ unzip main.zip
-    $ cd my-workstation-main/
-    $ ./setup.sh
+On a fresh [Debian](https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/) installation,
+upgrade the system and then run:
 
-## Software List
+```
+bash bootstap.sh
+ansible-playbook -K main.yml
+```
 
-    TODO
+Playbooks are grouped by categories in `playbooks` dir. The playbook `main.yml` is a wrapper for
+running all playbooks at once. To run specific playbooks pass their filenames to `ansible-playbook`, eg.
 
-## Tested on
-- [Debian 11.4.0 (Bullseye)](https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/): **Remember to give sudoers access to your user with `visudo` command.**
+```
+ansible-playbook -K playbooks/go.yml playbooks/user.yml
+```
+
+## Compatibility
+
+Tested on **Debian 12 (Bookworm)**.
 
 ## License
 Licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 Read [LICENSE](LICENSE) for more information
+
+
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html#ansible-collections-ansible-builtin-apt-module

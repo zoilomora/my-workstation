@@ -1,0 +1,55 @@
+- hosts: all
+  become: true
+
+  tasks:
+    - name: Install apt-transport-https
+      ansible.builtin.apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+        state: latest
+
+    - name: Check if "Microsoft" keyring is already installed
+      ansible.builtin.stat:
+        path: "/etc/apt/keyrings/microsoft.gpg"
+      register: microsoft_keyring
+
+    - name: Install "Microsoft" keyring
+      block:
+        - name: Download "Microsoft" signing key
+          ansible.builtin.get_url:
+            url: "https://packages.microsoft.com/keys/microsoft.asc"
+            dest: "/tmp/microsoft.gpg"
+        - name: Add "Microsoft" signing key
+          ansible.builtin.shell:
+            cmd: "cat /tmp/microsoft.gpg | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg"
+        - name: Remove temporary files from "Microsoft" signing key
+          ansible.builtin.file:
+            path: "/tmp/microsoft.gpg"
+            state: absent
+      when: microsoft_keyring is defined and not microsoft_keyring.stat.exists
+
+    - name: Check if "VS Code" repository is already installed
+      ansible.builtin.stat:
+        path: "/etc/apt/sources.list.d/vs-code.list"
+      register: vscode_repository
+
+    - name: Install "VS Code" repository
+      block:
+        - name: Get DEB architecture
+          shell: dpkg --print-architecture
+          register: deb_architecture
+
+        - name: Add "VS Code" repository into sources list
+          ansible.builtin.apt_repository:
+            repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main"
+            filename: vs-code
+            state: present
+      when: vscode_repository is defined and not vscode_repository.stat.exists
+
+    - name: Install "VS Code" packages
+      ansible.builtin.apt:
+        name: code
+        state: latest
+        update_cache: true

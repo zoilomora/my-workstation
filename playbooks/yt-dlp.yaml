@@ -1,0 +1,18 @@
+- hosts: all
+  become: true
+  vars:
+    yt_version: 2023.06.22
+    yt_checksum: sha256:924464eb831bdb99d854b9d47ff9e1c0870eab276113adaf8a74a8561ad332b9
+
+  tasks:
+    - name: Install "ffmpeg" package
+      ansible.builtin.apt:
+        name: ffmpeg
+        state: latest
+
+    - name: Install "yt-dlp" package
+      ansible.builtin.get_url:
+        url: "https://github.com/yt-dlp/yt-dlp/releases/download/{{ yt_version }}/yt-dlp"
+        dest: /usr/local/bin/yt-dlp
+        checksum: "{{ yt_checksum }}"
+        mode: 0755
